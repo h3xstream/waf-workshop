@@ -1,0 +1,61 @@
+site_name: "WAF Bypass Workshop"
+site_author: "Philippe Arteau"
+copyright: "This workshop was bulit by Philippe Arteau using <a target=\"_blank\" href=\"https://squidfunk.github.io/mkdocs-material/\">MkDocs</a>."
+
+repo_name: h3xstream/waf-workshop
+repo_url: https://github.com/h3xstream/waf-workshop/
+
+nav:
+  - 'intro.md'
+  - 'waf.md'
+  - "1. Syntax Alternative":
+    - '01-syntax-alternative.md'
+    - '01-lab.md'
+  - "2. Encoding":
+    - '02-encoding.md'
+    - '02-lab.md'
+  - "3. SQL Syntax":
+    - '03-sql-syntax.md'
+    - '03-lab.md'
+  - "4. Switching Protocol":
+    - '04-switching-protocol.md'
+    - '04-lab.md'
+  - "5. Request Smuggling":
+    - '05-request-smuggling.md'
+    - '05-lab.md'
+  - 'conclusion.md'
+
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: blue
+
+  features:
+    - navigation.sections
+
+  #logo: assets/todo.svg
+  #favicon: assets/favicon.ico
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  #Many depdencies required for the PDF plugin
+  #- with-pdf
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - attr_list
+  - admonition
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+
+extra:
+  generator: false
