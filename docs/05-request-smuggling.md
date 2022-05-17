@@ -1,6 +1,45 @@
 # Request Smuggling Material
 
-TODO
+
+
+## HTTP/1.1 CL.CL
+
+### Duplicate Content-Length (CL.CL)
+
+The first edge case that was documented was the use of two `Content-Length` headers with conflicting values. This cause issue when the proxy and the backend do not use the same value. How can this be possible? Because the parsers are implemented differently, one implementation might keep the last seen header while an other could keep the first one.
+
+*Implementation where the last value is kept*
+```python
+headers = {}
+for line : httpRequest
+    parts = line.split(":")
+    headers[parts[0]] = parts[1]
+```
+
+
+*Implementation where the first value is kept*
+```python
+headers = {}
+for line : httpRequest
+    parts = line.split(":")
+    if(parts[0] in headers): #Does not override existing value
+        headers[parts[0]] = parts[1]
+```
+
+### What each party sees in a CL.CL attack
+
+The proxy **use the first** header:
+
+![HRS: Sees first Content-Length](images/clcl_first.png)
+
+The backend application **use the last** header:
+
+![HRS: Sees last Content-Length](images/clcl_last.png)
+
+### There is more...
+
+This scenario is probably the easiest to understand. This is why it was presented first. However, the length of the request is **not defined only by Content-Length**. HTTP has evolved greatly and has multiple headers that cover similar features.
+
 
 ## HTTP/1.1 CL.TE
 
@@ -11,9 +50,8 @@ TODO
 
 ### Chunked encoding
 
-> “Chunked encoding is useful when larger amounts of data are sent to the client and the total size of the response may not be known until the request has been fully processed.”
-> 
-> Ref: [Mozilla.org: Transfer-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
+Positive
+: “Chunked encoding is useful when larger amounts of data are sent to the client and the total size of the response may not be known until the request has been fully processed.” Ref: [Mozilla.org: Transfer-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
 
 It can be used to serve large files generated on the fly. An example can be seen below. The length is in hexadecimal followed by the bytes "chunk".
 
@@ -51,14 +89,14 @@ Conference!\r\n
 
 ### Content-Length vs Transfer-Encoding
 
-The server now has an additional dilemma if both `Content-Length` and `Transfer-Encoding`. Luckily, the HTTP/1.1 RFC is describing the expected scenario.
+The server now has an additional dilemma if both `Content-Length` and `Transfer-Encoding` are present. Which one should be used? Luckily, the HTTP/1.1 RFC is describing the expected scenario.
 
-“If a message is received with both a Transfer-Encoding header field and a Content-Length header field, the latter MUST be ignored.”
-Ref: [RFC2616 - HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc2616)
+!!! info "From the RFC"
 
-`Transfer-Encoding` must be used first.
+    “If a message is received with both a Transfer-Encoding header field and a Content-Length header field, the latter MUST be ignored.”
+    Ref: [RFC2616 - HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc2616)
 
-!!! info "Transfer-Encoding Support"
-    
-    However `Transfer-Encoding` might not be supported by both services. In 2021, that would be a major oversight.
+`Transfer-Encoding` must be used instead of Content-Length. However `Transfer-Encoding` might not be supported by both services. In 2021, that would be a major oversight.
+
+
 

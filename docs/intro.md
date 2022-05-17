@@ -8,7 +8,9 @@ I decided to build this workshop to summarize the types of bypasses that can be 
 
 ## Where to start
 
-All exercises and the soure of these pages is available on the [repository h3xstream/waf-workshop](https://github.com/h3xstream/waf-workshop/).
+All exercises and the soure of these pages is available on Github.
+
+[Clone h3xstream/waf-workshop](https://github.com/h3xstream/waf-workshop/){ .md-button .md-button--primary target=_blank}
 
 Feel free to contribute to the content of this workshop.
 

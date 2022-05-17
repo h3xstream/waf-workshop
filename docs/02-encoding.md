@@ -38,6 +38,8 @@ foreach ( $routes as $route => $handlers ) {
     $args = array();
 ```
 
+Source: [6 ways to enumerate WordPress Users](https://www.gosecure.net/blog/2021/03/16/6-ways-to-enumerate-wordpress-users/)
+
 ### URL encoding
 
 TODO
@@ -63,9 +65,13 @@ If you are testing for potential XSS, the payload you are sending to the webserv
 ### Unicode normalization
 
 
-## Burp Extensions
+## Tools
 
-### HackVertor
+### Cyberchef
+
+TODO
+
+### HackVertor (Burp Extension)
 
 With this extension you can use an XML tags to represent encoding. Instead of encoding manually data and placing it in your request, you can build readable requests.
 
@@ -84,7 +90,7 @@ With this extension you can use an XML tags to represent encoding. Instead of en
  - [Official website](https://hackvertor.co.uk/)
  - [Burp extension page](https://portswigger.net/bappstore/65033cbd2c344fbabe57ac060b5dd100)
 
-### Fuzzy Encoding Generator
+### Fuzzy Encoding Generator (Burp Extension)
 
 This extension integrate in Burp Intruder. It will re-encode in various forms the value place between parameter delimiters `§§`.
 
