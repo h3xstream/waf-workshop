@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+
+  crs:
+    image: owasp/modsecurity-crs:3.3.2-apache
+    #build:
+    #  context: .
+    #  dockerfile: apache/Dockerfile
+    ports:
+      - ${IP}:80:80
+      # only available if SETTLS was enabled:
+      - ${IP}:443:443
+    depends_on:
+      - web
+    environment:
+      - SERVERNAME=web-proxy
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+
+      - PROXY=1
+      - BACKEND=http://web/
+      #- ./httpd-proxy.conf:/usr/local/apache2/conf/extra/httpd-proxy.conf
+
+    volumes:
+      - ./modsec/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf:/etc/modsecurity.d/owasp-crs/rules/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
+      - ./modsec/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf:/etc/modsecurity.d/owasp-crs/rules/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
+
+  db:
+    image: mysql:8.0.27
+    environment:
+      MYSQL_ROOT_PASSWORD: my_secret_pw
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+
+    ports:
+      - ${IP}:9906:3306
+
+  web:
+    #image: php:7.2.2-apache
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    depends_on:
+      - db
+    volumes:
+      - ./php/:/var/www/html/
+    ports:
+      - ${IP}:8000:80
+    stdin_open: true
+    tty: true
