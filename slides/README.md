@@ -10,12 +10,12 @@ npm i @marp-team/marp-cli
 
 Once..
 ```
-npx @marp-team/marp-cli@latest -w slides.md
+npx @marp-team/marp-cli@latest -w index.md
 ```
 
 In Development mode (Continous)...
 ```
-npx @marp-team/marp-cli@latest -w slides.md
+npx @marp-team/marp-cli@latest -w index.md
 ```
 
 Serving the slides locally

@@ -3,7 +3,7 @@ theme: gaia
 _class: lead
 backgroundColor: #fff
 backgroundImage: url('images/hero-background.svg')
-#marp: true
+marp: true
 ---
 
 ![bg left:40% 80%](images/nsec_logo.png)
@@ -19,7 +19,7 @@ Presented by Philippe Arteau
 # About Me
 
  - Security Engineer at ServiceNow
- - Interested in web application security, automation, crypto
+ - Interested in web application security, automation, crypto, ...
  - Open-source developer
     - **Find Security Bugs**: Static Analysis for Java applications
     - **Burp and ZAP Plugins**: (Retire.js, CSP Auditor, Reissue Request Scripter, …)
@@ -28,17 +28,41 @@ Presented by Philippe Arteau
 
 # Agenda
 
- 0. What is a WAF?
- 1. Alternative Syntax
- 2. Encoding
- 3. SQL Syntax
- 4. Switching Protocol
- 5. Request Smuggling
+ 1. What is a WAF?
+ 2. Alternative Syntax
+ 3. Encoding
+ 4. SQL Syntax
+ 5. Switching Protocol
+ 6. Request Smuggling
+
+---
+
+# Workshop
+
+ - Repository: https://github.com/h3xstream/waf-workshop
+   - Slides are linked in the **README.md** file.
 
 --- 
 ![bg left:35%](images/wall-21534_1920.jpg)
 <!-- _class: lead -->
 # What is a WAF?
+
+
+---
+
+# Definition
+
+- The purpose of the Web Application Firewall is to filters, monitors, and blocks HTTP traffic.
+
+- HTTP traffic can incoming and/or outgoing 
+
+![](images/proxy.png)
+
+---
+
+# Vendors
+
+![](images/vendors.png)
 
 ---
 ![bg left:35%](images/railroad-2100353_1920.jpg)
@@ -209,6 +233,22 @@ In order to work:
 ![bg left:35%](images/container-789488_1920.jpg)
 <!-- _class: lead -->
 # Request Smuggling
+
+---
+![bg left:35%](images/glasses-1052010_1920.jpg)
+<!-- _class: lead -->
+## Conclusion
+
+---
+
+## Conclusion
+
+ - Think about transformation
+    - Encoding, Replacement
+ - HTTP protocol support
+    - Application vs Proxy
+ - WAF are no silver bullet
+    - Using WAF is not bad either! (Additional safety)
 
 ---
 
