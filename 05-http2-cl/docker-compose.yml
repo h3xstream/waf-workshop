@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  #Armeria Proxy
+  armeria:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-armeria
+    ports:
+      - "8443:8443"
+    
+
+  webmain:
+    image: php:8.0.13-apache
+    volumes:
+      - ./webmain/:/var/www/html/
+    ports:
+      - "8001:80"
+
+  webstatic:
+    image: php:8.0.13-apache
+    volumes:
+      - ./webstatic/:/var/www/html/
+    ports:
+      - "8002:80"
