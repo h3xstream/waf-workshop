@@ -27,7 +27,9 @@ It is sometimes possible to change the expected case mapping. It  will  bypass W
 
 Source code handling the `rest_route` parameter.
 
-```php hl_lines="2"
+```php hl_lines="4"
+<?php
+...
 foreach ( $routes as $route => $handlers ) {
     $match = preg_match( '@^' . $route . '$@i', $path, $matches );
 
@@ -94,7 +96,12 @@ With this extension you can use an XML tags to represent encoding. Instead of en
 
 This extension integrate in Burp Intruder. It will re-encode in various forms the value place between parameter delimiters `§§`.
 
+<figure markdown>
 ![](images/fuzzy_burp.gif)
+<figcaption>Fuzzy Encoding Generator in action</figcaption>
+</figure>
+
+
 
  - [Github repository](https://github.com/GoSecure/burp-fuzzy-encoding-generator)
 

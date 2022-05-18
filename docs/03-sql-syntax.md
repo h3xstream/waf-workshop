@@ -3,7 +3,7 @@
 
 ## Detection
 
-It is possible to identify SQL injection small expressions.
+It is possible to identify SQL injection small expressions. However, the exploitation will required the help of utility functions such as `substring()` and `ascii()`. It will also include SQL keywords such as `UNION` and `SELECT`. Finally, some table names and column will used to extract the database schema structure (if the table name are not brute forced or known). All those keywords are likely to be search by WAF.
 
 
 ??? info "How to detect SQL injection"
@@ -74,11 +74,17 @@ This behavior can be abused to fool libinjection tokenizer. Libinjection interna
 
 Here is a demonstration of modsecurity’s capability to block a malicious pattern for SQL injection. A forbidden page is returned which is the consequence of detection.
 
+<figure markdown>
 ![](images/sqli_blocked.gif)
+<figcaption>The input is blocked</figcaption>
+</figure>
 
 In the following image, you can see the original request being slightly modified to bypass modsecurity and libinjection.
 
+<figure markdown>
 ![](images/sqli_bypass.gif)
+<figcaption>The request is allowed by the WAF</figcaption>
+</figure>
 
 
 Source: [A Scientific Notation Bug in MySQL left AWS WAF Clients Vulnerable to SQL Injection](https://www.gosecure.net/blog/2021/10/19/a-scientific-notation-bug-in-mysql-left-aws-waf-clients-vulnerable-to-sql-injection/)

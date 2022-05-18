@@ -22,7 +22,7 @@ for line : httpRequest
 headers = {}
 for line : httpRequest
     parts = line.split(":")
-    if(parts[0] in headers): #Does not override existing value
+    if(parts[0] not in headers): #Does not override existing value
         headers[parts[0]] = parts[1]
 ```
 
@@ -50,8 +50,9 @@ This scenario is probably the easiest to understand. This is why it was presente
 
 ### Chunked encoding
 
-Positive
-: “Chunked encoding is useful when larger amounts of data are sent to the client and the total size of the response may not be known until the request has been fully processed.” Ref: [Mozilla.org: Transfer-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
+!!! info "From the doc"
+
+    “Chunked encoding is useful when larger amounts of data are sent to the client and the total size of the response may not be known until the request has been fully processed.” Ref: [Mozilla.org: Transfer-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
 
 It can be used to serve large files generated on the fly. An example can be seen below. The length is in hexadecimal followed by the bytes "chunk".
 

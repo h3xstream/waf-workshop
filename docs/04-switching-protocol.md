@@ -4,8 +4,11 @@
 
 WebSocket communication is full-duplex communication that takes place inside a HTTP/1. While typical HTTP/1 messages can be sent in full-duplex, classic HTTP require all messages to have a headers and body section. WebSocket allows lightweight communication along with the control over the Socket with Javascript.
 
-![h2c sequence diagram](images/websocket_sequence_diagram.png)
 
+<figure markdown>
+![websocket sequence diagram](images/websocket_sequence_diagram.png)
+<figcaption>WebSocket handshake</figcaption>
+</figure>
 
 ### Request Smuggling opportunity
 
@@ -31,9 +34,11 @@ HTTP 2 Cleartext, shorten to h2c, is the protocol upgrade a connection from HTTP
 
 ### HTTP 2 Handshake Sequence
 
+
+<figure markdown>
 ![h2c sequence diagram](images/h2c_sequence_diagram.png)
-
-
+<figcaption>HTTP/2 Cleartext handshake</figcaption>
+</figure>
 
 ### Potential abuses
 
