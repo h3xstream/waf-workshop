@@ -11,7 +11,15 @@ With modern frameworks and applications, the same information is often to be ava
 As an example, many cloud hosting provider try to enforce some additional hardening to Wordpress instances. The possible reasons is that is represent the most used applications and because it is also a common target from attacker.
 Doing a survey of multiples thousands of Wordpress deployment locations. Most high profile Wordpress websites had attempt to disable the user enumeration but in most case, the enumeration was still possible thanks to lesser known entrypoints.
 
- - Source: [6 ways to enumerate WordPress Users](https://www.gosecure.net/blog/2021/03/16/6-ways-to-enumerate-wordpress-users/)
+Here are four different URL/paths that will return users details including its email.
+
+ - `https://target.blog/wp-json/wp/v2/users`
+ - `https://target.blog/?author=1`
+ - `https://target.blog/?rest_route=/wp/v2/users`
+ - `https://public-api.wordpress.com/rest/v1.1/sites/target.blog/posts`
+
+
+Source: [6 ways to enumerate WordPress Users](https://www.gosecure.net/blog/2021/03/16/6-ways-to-enumerate-wordpress-users/)
 
 ## Alternative HTML Tags
 

@@ -6,7 +6,7 @@ copyright: "This workshop was bulit by Philippe Arteau using <a target=\"_blank\
 #repo_url: https://github.com/h3xstream/waf-workshop/
 
 nav:
-  - 'intro.md'
+  - 'index.md'
   - 'waf.md'
   - "1. Alternative Syntax":
     - '01-alternative-syntax.md'

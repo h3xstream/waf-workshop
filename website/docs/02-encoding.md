@@ -135,5 +135,5 @@ This extension integrate in Burp Intruder. It will re-encode in various forms th
 
 
 
- - [Github repository](https://github.com/GoSecure/burp-fuzzy-encoding-generator)
+[Fuzzy Encoding Github repository](https://github.com/GoSecure/burp-fuzzy-encoding-generator)
 

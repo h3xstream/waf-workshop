@@ -64,7 +64,7 @@ SELECT 0x7461626c655f6e616d65 FROM all_tab_tables
 
 
 
-## Scientific expression in MySQL (libinjection)
+## Scientific expression in MySQL
 
 When MySQL sees `1.e(abc)`, it will ignore the `1.e(` portion because the following characters do not form a valid numeric value.
 
