@@ -24,43 +24,6 @@ services:
             - 7777:80
             - 8443:443
 
-    haproxy:
-        image: haproxy:latest
-        expose:
-            - 443
-        ports:
-            - "8001:443"
-        volumes:
-            - ./configs/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
-            - ./configs/haproxy.pem:/tmp/haproxy.pem
-        links:
-            - backend
-    nginx:
-        image: nginx:latest
-        expose:
-            - 443
-        ports:
-            - "8002:443"
-        volumes:
-            - ./configs/nginx.conf:/etc/nginx/conf.d/vhost.conf:ro
-            - ./configs/key.pem:/tmp/key.pem
-            - ./configs/cert.pem:/tmp/cert.pem
-        links:
-            - backend
-    nuster:
-        image: nuster/nuster:latest
-        expose:
-            - 80
-            - 443
-        ports:
-            - "8003:443"
-        volumes:
-            - ./configs/nuster.cfg:/etc/nuster/nuster.cfg:ro
-            - ./configs/haproxy.pem:/tmp/haproxy.pem
-        links:
-            - backend
-            - haproxy
-
     db:
         image: mysql:8.0.27
         environment:
