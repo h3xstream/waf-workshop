@@ -65,7 +65,7 @@ Presented by Philippe Arteau
 
 # Vendors
 
-![](images/vendors.png)
+![center](images/vendors.png)
 
 ---
 ![bg left:35%](images/railroad-2100353_1920.jpg)
@@ -90,18 +90,18 @@ What is the path to Wordpress's users endpoint?
 # Alternative HTML Tags
 
 ```xml
-<svg/onload=prompt(/OPENBUGBOUNTY/)>
+<svg/onload=prompt(/XSS/)>
 ```
 
 ```html
 <video onnull=null onmouseover=confirm(1)>
 ```
-*Source: Cloudflare XSS Bypass by [Bohdan Korzhynskyi](https://twitter.com/bohdansec)*
+*Source: Cloudflare WAF Bypass by [Bohdan Korzhynskyi](https://twitter.com/bohdansec)*
 
 ```html
 <dETAILS open onToGgle=a=prompt,a() x>
 ```
-*Source: Akamai WAF Bypass (2018) found by [@s0md3v](https://twitter.com/s0md3v/)*
+*Source: Akamai WAF Bypass found by [@s0md3v](https://twitter.com/s0md3v/)*
 
 ---
 
@@ -128,19 +128,38 @@ Alternatives table names:
 
 # Case Mapping
 
+PHP `i` identifier is needed to enable insensitivity
+```php
+preg_match("/union.*select/i")
+```
 
-TODO
+Python `re.IGNORECASE` 
+```
+re.compile("<[a-z]", re.IGNORECASE)
+```
+
+`[NC]` in `.htaccess` (Apache HTTP Server)
+```
+RewriteCond %{QUERY_STRING} \bwp/v2/users\b [NC]
+```
 
 ---
 
 # URL Encoding
 
-TODO
+**Path encoded**
+```url
+http://server.com/cgi/%252E%252E%252F%252E%252E%252Fwinnt/system32/cmd.exe?/c+dir+c:\
+```
 
+**HTML double encoded**
+```url
+%253Cscript%253Econfirm()%253C%252Fscript%253E
+```
 
 ---
 
-# HTML/XSS specific
+# HTML/XSS and Encoding
 
 Depending on the context, different encoding can be used.
 
@@ -153,7 +172,7 @@ Depending on the context, different encoding can be used.
 
 ---
 
-### Unicode
+### Unicode Encoding
 
 Unicode is not the only way to encode characters
 
@@ -186,6 +205,16 @@ Content when fetch:
 ```
 
 ---
+
+## Exercises
+
+Time for some actions..
+
+Open the following URL and see if you can find the bypasses:
+http://nsec2022.xss.lol:2222/
+
+---
+
 
 ![bg left:35%](images/medical-5835701_1920.jpg)
 <!-- _class: lead -->
@@ -224,7 +253,7 @@ SELECT 0x7461626c655f6e616d65 FROM all_tab_tables
 
 ---
 
-## Scientific expression in MySQL
+## Scientific Expression in MySQL
 
 Using notation such as `1.e(`
 
@@ -265,7 +294,7 @@ In order to work:
  - You need to either:
     - Control the status code of ONE page
     - Deploy a custom application at a given path
- - Proxy must honors 101 response
+ - Proxy must honors 101 response (Switching Protocols)
  - WAF does not inspect WebSocket communication
 
 ---
@@ -289,6 +318,12 @@ In order to work:
 
 ---
 
+# Exercise
+
+[Live instance (only for NorthSec)](https://nsec2022.xss.lol:8443/){ .md-button .md-button--primary target=_blank}
+
+---
+
 ![bg left:35%](images/container-789488_1920.jpg)
 <!-- _class: lead -->
 # Request Smuggling
@@ -305,8 +340,8 @@ In order to work:
  - Think about transformation
     - Encoding, Replacement, Nested Encoding
  - Parsers implementation differences
-    - Application vs Proxy
- - WAF are not silver bullets
+    - Application vs Proxy vs Security controls
+ - WAF is not a silver bullet
     - Using a WAF is not bad either! (Additional safety)
 
 ---

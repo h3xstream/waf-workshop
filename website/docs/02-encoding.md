@@ -44,7 +44,21 @@ Source: [6 ways to enumerate WordPress Users](https://www.gosecure.net/blog/2021
 
 ### URL encoding
 
-TODO
+HTTP GET and POST parameter are expected to be encoded by Web Application Firewall. But what happens if the application decode the value once it has already be decoded by the web framework? This additional decoding is unlikely to break anything with normal input.
+
+Here are few examples:
+
+**Path encoded**
+```url
+http://server.com/cgi/%252E%252E%252F%252E%252E%252Fwinnt/system32/cmd.exe?/c+dir+c:\
+```
+
+**HTML double encoded**
+```url
+%253Cscript%253Econfirm()%253C%252Fscript%253E
+```
+
+Examples taken from: [How to Bypass WAF. HackenProof Cheat Sheet](https://hacken.io/researches-and-investigations/how-to-bypass-waf-hackenproof-cheat-sheet/)
 
 ### HTML/XSS specific
 
@@ -65,10 +79,10 @@ If you are testing for potential XSS, the payload you are sending to the webserv
 
 Unicode is not the only way to encode characters
 
-• UTF-7 (`+ADw-script+AD4-alert(123)+ADw-+AC8-script+AD4-`) ⚠️
-• UTF-16LE (`00 3c 00 62 00 6f 00 6f 00 6b`)
-• UTF-16BE
-• UTF-32…
+ - UTF-7 (`+ADw-script+AD4-alert(123)+ADw-+AC8-script+AD4-`) ⚠️
+ - UTF-16LE (`00 3c 00 62 00 6f 00 6f 00 6b`)
+ - UTF-16BE
+ - UTF-32…
 
 ⚠️: No longer supported by many browsers and frameworks.
 
@@ -91,6 +105,7 @@ Content when fetch:
 <img src=x onerror=prompt(1)>
 ```
 
+More info: [XSS for ASP.net developers](https://www.gosecure.net/blog/2016/03/22/xss-for-asp-net-developers/)
 
 ## Tools
 
