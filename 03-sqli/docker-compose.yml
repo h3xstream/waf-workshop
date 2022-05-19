@@ -35,8 +35,8 @@ services:
       MYSQL_USER: devuser
       MYSQL_PASSWORD: devpass
 
-    ports:
-      - ${IP}:9906:3306
+    #ports:
+    #  - ${IP}:9906:3306
 
   web:
     #image: php:7.2.2-apache
@@ -47,7 +47,7 @@ services:
       - db
     volumes:
       - ./php/:/var/www/html/
-    ports:
-      - ${IP}:8000:80
+    #ports:
+    #  - ${IP}:8000:80
     stdin_open: true
     tty: true
