@@ -1,11 +1,10 @@
-
 # Encoding Material
 
 ## Common formats
 
 ### Case mapping
 
-It is sometimes possible to change the expected case mapping. It  will  bypass WAF rules that are case sensitive. Here is an example of htaccess misconfiguration. htaccess is not a WAF per say but it represent what WAF custom rules be.
+It is sometimes possible to change the expected case mapping. It  will bypass WAF rules that are case-sensitive. Here is an example of `.htaccess` misconfiguration. htaccess is not a WAF per se but it represents what WAF custom rules be.
 
 === "Improper .htaccess"
 
@@ -44,9 +43,9 @@ Source: [6 ways to enumerate WordPress Users](https://www.gosecure.net/blog/2021
 
 ### URL encoding
 
-HTTP GET and POST parameter are expected to be encoded by Web Application Firewall. But what happens if the application decode the value once it has already be decoded by the web framework? This additional decoding is unlikely to break anything with normal input.
+HTTP GET and POST parameters are expected to be encoded by Web Application Firewall. But what happens if the application decodes the value once it has already been decoded by the web framework? This additional decoding is unlikely to break anything with normal input.
 
-Here are few examples:
+Here are a few examples:
 
 **Path encoded**
 ```url
@@ -58,11 +57,11 @@ http://server.com/cgi/%252E%252E%252F%252E%252E%252Fwinnt/system32/cmd.exe?/c+di
 %253Cscript%253Econfirm()%253C%252Fscript%253E
 ```
 
-Examples taken from: [How to Bypass WAF. HackenProof Cheat Sheet](https://hacken.io/researches-and-investigations/how-to-bypass-waf-hackenproof-cheat-sheet/)
+Examples are taken from: [How to Bypass WAF. HackenProof Cheat Sheet](https://hacken.io/researches-and-investigations/how-to-bypass-waf-hackenproof-cheat-sheet/)
 
 ### HTML/XSS specific
 
-If you are testing for potential XSS, the payload you are sending to the webserver could targeted for different context in the page. Based on the potential location you could used context specific encoding.
+If you are testing for potential XSS, the payload you are sending to the webserver could be targeted for different contexts in the page. Based on the potential location you could use context-specific encoding.
 
 | **Encoding Type** | **Context** | **"** |**<** |
 | --- | --- | --- | --- |
@@ -73,7 +72,7 @@ If you are testing for potential XSS, the payload you are sending to the webserv
 
 !!! info "Purpose"
 
-    All those encodings may allow you bypass keywords or characters blacklist.
+    All those encodings may allow you to bypass keywords or characters blacklist.
 
 ### Unicode
 
@@ -111,7 +110,7 @@ More info: [XSS for ASP.net developers](https://www.gosecure.net/blog/2016/03/22
 
 ### Cyberchef
 
-A nice web based interface that allow you to chain multiple encoding types.
+A nice web-based interface that allows you to chain multiple encoding types.
 
 
 
@@ -122,7 +121,7 @@ A nice web based interface that allow you to chain multiple encoding types.
 
 ### HackVertor (Burp Extension)
 
-With this extension you can use an XML tags to represent encoding. Instead of encoding manually data and placing it in your request, you can build readable requests. It has a better selection of encoding since it is focus on web security rather than general formats.
+With this extension, you can use XML tags to represent encoding. Instead of encoding manually data and placing it in your request, you can build readable requests. It has a better selection of encoding since it is focused on web security rather than general formats.
 
 === "HackVertor syntax"
 
@@ -141,7 +140,7 @@ With this extension you can use an XML tags to represent encoding. Instead of en
 
 ### Fuzzy Encoding Generator (Burp Extension)
 
-This extension integrate in Burp Intruder. It will re-encode in various forms the value place between parameter delimiters `§§`.
+This extension integrates with Burp Intruder. It will re-encode in various forms the value placed between parameter delimiters `§§`.
 
 <figure markdown>
 ![](images/fuzzy_burp.gif)

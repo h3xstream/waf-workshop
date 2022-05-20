@@ -38,7 +38,7 @@ There are two SQL injection vulnerabilities in the applications.
 
 ## ModSecurity
 
-As soon as you will test parameter with SQL keyword, modsecurity return a Forbidden page.
+As soon as you will test the parameters with SQL keywords, modsecurity return a Forbidden page.
 
 ![](images/lab3_forbidden.png)
 
@@ -46,16 +46,16 @@ Does the `union` and `select` are systematically blocked?
 
 ??? success "Answer"
 
-    Union and select are english word that are too common to always be blocked.
+    "Union" and "select" are english words that are too common to always be blocked.
 
     You can confirm this behavior by requesting `index.php?genre=union`
     
-    ModSecurity is a combination of RegEx and analysis by libinjection. Looking at the log you will be able to see which rule is triggered.
+    ModSecurity is a combination of RegEx and context analysis by libinjection. Looking at the log you will be able to see which rule is triggered.
 
 
 ## Log Troubleshooting
 
-The log are pretty verbose because they attach complete request.
+The log is pretty verbose because they attach complete requests.
 
 Here is a Regex rule that matched:
 ```
@@ -80,7 +80,7 @@ Here is the general syntax necessary to exfiltrate varchar values from the datab
 
 === ":octicons-check-circle-fill-16: Obfuscated query"
 
-    With the `1.e` notation expression that are ignored by the DBMS.
+    With the `1.e` notation expression that is ignored by the DBMS.
 
     ```sql
     or 1.e(ascii 1.e(substring(1.e(select password from users limit 1 1.e,1 1.e) 1.e,1 1.e,1 1.e)1.e)1.e) = 70 or'1'='2
@@ -94,9 +94,9 @@ Here is the general syntax necessary to exfiltrate varchar values from the datab
     or (ascii (substring((select password from users limit 1,1) ,1 ,1 ))) = 70 or'1'='2
     ```
 
-> With this SQL syntax, we are targeting the field `password` from the table `users`. The function substring is used to extract one character at the time and comparing it to an ascii value (`70` in the example).
+> With this SQL syntax, we are targeting the field `password` from the table `users`. The function substring is used to extract one character at the time and compare it to an ascii value (`70` in the example).
 
 ## Scripting
 
-Once you have working request that is producing an oracle (binary response based on the matching content). It is possible to script an attack to extract the complete content of any database tables.
+Once you have a working request that is producing an oracle (binary response based on the matching content). It is possible to script an attack to extract the complete content of any database tables.
 

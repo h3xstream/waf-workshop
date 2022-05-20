@@ -3,7 +3,7 @@
 
 ## Detection
 
-It is possible to identify SQL injection small expressions. However, the exploitation will required the help of utility functions such as `substring()` and `ascii()`. It will also include SQL keywords such as `UNION` and `SELECT`. Finally, some table names and column will used to extract the database schema structure (if the table name are not brute forced or known). All those keywords are likely to be search by WAF.
+It is possible to identify SQL injection small expressions. However, the exploitation will require the help of utility functions such as `substring()` and `ascii()`. It will also include SQL keywords such as `UNION` and `SELECT`. Finally, some table names and column names will be used to extract the database schema structure (if the table name is not brute forced or known). All those keywords are likely to be searched by WAF.
 
 
 ??? info "How to detect SQL injection"
@@ -23,7 +23,7 @@ It is possible to identify SQL injection small expressions. However, the exploit
 
 Whitespace alternatives by DBMS
 
-| DBMS | ASCII Characters in hexadicimal |
+| DBMS | ASCII Characters in hexadecimal |
 | ---- | ------------------------------- |
 | MySQL	5 | 09, 0A, 0B, 0C, 0D, A0, 20 |
 | MySQL	3	| 01, 02, 03, 04, 05, 06, 07, 08, 09, 0A, 0B, 0C, 0D, 0E, 0F, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 1A, 1B, 1C, 1D, 1E, 1F, 20, 7F, 80, 81, 88, 8D, 8F, 90, 98, 9D, A0 |
@@ -36,7 +36,7 @@ Whitespace alternatives by DBMS
 
 ## Query Obfuscation
 
-Here are few additional tricks taken from [Roberto Salgado paper](https://paper.bobylive.com/Meeting_Papers/BlackHat/USA-2013/US-13-Salgado-SQLi-Optimization-and-Obfuscation-Techniques-Slides.pdf).
+Here are a few additional tricks taken from [Roberto Salgado paper](https://paper.bobylive.com/Meeting_Papers/BlackHat/USA-2013/US-13-Salgado-SQLi-Optimization-and-Obfuscation-Techniques-Slides.pdf).
 
 ### Comments
 
@@ -48,7 +48,7 @@ SELECT/**/name/**/FROM/**/users/**/WHERE/**/1=1
 
 ### MSSQL [Square brackets]
 
-Microsoft DBMS allow table name to be surrounded by square brackets. Column names can be surrounded by double quotes.
+Microsoft DBMS allow table name to be surrounded by square brackets. Column names can be surrounded by double-quotes.
 
 ```sql
 SELECT"name"FROM[sys.databases]WHERE 1=1
@@ -56,7 +56,7 @@ SELECT"name"FROM[sys.databases]WHERE 1=1
 
 ### Oracle Hex Encode
 
-Oracle column names can be hex encoded.
+Oracle column names can be hex-encoded.
 
 ```sql
 SELECT 0x7461626c655f6e616d65 FROM all_tab_tables

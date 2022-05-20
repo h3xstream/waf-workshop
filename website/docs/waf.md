@@ -2,7 +2,7 @@
 
 ## Context
 
-In a typical scalable web infrastructure, a proxy will place in front of the backend. The proxy is forwarding a request to the backend. It can be load balancer, a caching server or simply a reverse proxy. A firewall functionnality can be enable on each of those.
+In a typical scalable web infrastructure, a proxy will place in front of the backend. The proxy is forwarding a request to the backend. It can be a load balancer, a caching server, or simply a reverse proxy. A firewall functionality can be enabled on each of those.
 
 ![](images/proxy.png)
 
@@ -15,7 +15,7 @@ Analysis of incoming traffic can be to identify attack patterns to block or logg
 
 ## Vendors
 
-There are numerous WAF software that can be used. Many of those are included in cloud infrastructure.
+There are numerous WAF softwares that can be used. Many of those are included in cloud infrastructure.
 
 The two main open-source projects are [modsecurity](https://github.com/SpiderLabs/ModSecurity) and [naxsi](https://github.com/nbs-system/naxsi).
 

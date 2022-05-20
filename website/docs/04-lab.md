@@ -20,9 +20,9 @@ Open [https://localhost:8443](https://localhost:8443) in a browser to confirm th
 
 We have an application that will look and behave just like the one from the lab3. The application is also vulnerable to SQL injection.
 
-However, this time the WAF is even more aggressive. NAXSI is the open-source firewall used. No training was made (usually done to reduce false positive). All parameter are prohibited from special characters!
+However, this time the WAF is even more aggressive. NAXSI is the open-source firewall used. No training was made (usually done to reduce false positives). All parameters are prohibited from special characters!
 
-Another important difference is that the backend application was reimplemented in Go and HTTP2 support was enable.
+Another important difference is that the backend application was reimplemented in Go and HTTP2 support was enabled.
 
 ```go
 import(
@@ -46,6 +46,12 @@ python h2csmuggler.py -x https://127.0.0.1:8443 -t
 [INFO] h2c stream established successfully.
 [INFO] Success! https://127.0.0.1:8002 can be used for tunneling
 ```
+
+!!! info "h2cSmuggler"
+
+    h2cSmuggler is a tool developed by Jake Miller from BishopFox.
+
+    For more info : [h2c Smuggling: Request Smuggling Via HTTP/2 Cleartext (h2c)](https://bishopfox.com/blog/h2c-smuggling-request)
 
 ### Accessing Forbidden Path
 
