@@ -40,9 +40,9 @@ Presented by Philippe Arteau
 # Workshop
 
  - Repository: https://github.com/h3xstream/waf-workshop
- - See the the `README.md`:
+ - See the `README.md`:
    - Slides
-   - Details content and instructions 
+   - Detailed content and instructions 
    - Docker instances
 
 --- 
@@ -211,7 +211,7 @@ Content when fetch:
 Time for some actions..
 
 Open the following URL and see if you can find the bypasses:
-http://nsec2022.xss.lol:2222/
+[Live instance (only for NorthSec)](http://nsec2022.xss.lol:2222/)
 
 ---
 
@@ -255,7 +255,7 @@ SELECT 0x7461626c655f6e616d65 FROM all_tab_tables
 
 ## Scientific Expression in MySQL
 
-Using notation such as `1.e(`
+Using notation such as `1.e` followed by non-numeric character...
 
 
 ```sql
@@ -269,6 +269,14 @@ This is how MySQL/MariaDB will interpret
 ```
 
 Source: [A Scientific Notation Bug in MySQL left AWS WAF Clients Vulnerable to SQL Injection](https://www.gosecure.net/blog/2021/10/19/a-scientific-notation-bug-in-mysql-left-aws-waf-clients-vulnerable-to-sql-injection/) by Marc-Olivier Bergeron
+
+---
+
+# Exercise
+
+Time to bypass one of the most robust WAF modsecurity!
+
+[Live instance (only for NorthSec)](http://nsec2022.xss.lol/)
 
 ---
 
@@ -320,13 +328,70 @@ In order to work:
 
 # Exercise
 
-[Live instance (only for NorthSec)](https://nsec2022.xss.lol:8443/){ .md-button .md-button--primary target=_blank}
+New exercises for the fourth block!
+
+[Live instance (only for NorthSec)](https://nsec2022.xss.lol:8443/)
 
 ---
 
 ![bg left:35%](images/container-789488_1920.jpg)
 <!-- _class: lead -->
 # Request Smuggling
+
+---
+
+# HTTP/1.1 CL.CL
+
+The proxy sees first `Content-Length` header.
+
+![](images/clcl_first.png)
+
+---
+
+# HTTP/1.1 CL.CL
+
+While the backend sees last `Content-Length` header.
+
+![](images/clcl_last.png)
+
+---
+
+# HTTP/1.1 CL.TE
+
+`Transfer-Encoding: chunk`
+
+```yaml
+POST /index.php HTTP/1.1
+Host: myapp.com
+Transfer-Encoding: chunked
+
+5\r\n
+Hello\r\n
+8\r\n
+NorthSec\r\n
+B\r\n
+Conference!\r\n
+0\r\n
+\r\n
+```
+
+---
+
+# HTTP/1.1 CL.TE
+
+```
+POST / HTTP/1.1
+Host: localhost
+Content-Length: 45
+Transfer-Encoding: chunked
+
+0
+
+GET /admin HTTP/1.1
+Host: localhost
+
+```
+
 
 ---
 ![bg left:35%](images/glasses-1052010_1920.jpg)
