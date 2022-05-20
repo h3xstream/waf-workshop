@@ -1,3 +1,0 @@
-This document should not be exposed.
-
-flag{documentsAccessGranted}
