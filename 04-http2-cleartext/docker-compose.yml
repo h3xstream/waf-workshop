@@ -33,5 +33,5 @@ services:
             MYSQL_PASSWORD: apppass
         volumes:
             - ./mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql
-        ports:
-            - 9906:3306
+        #ports:
+        #    - 9906:3306
