@@ -13,7 +13,7 @@ $ docker-compose up
 Open [https://localhost:8443](https://localhost:8443) in a browser to confirm that everything is running.
 
 
-[Live instance (only for NorthSec)](https://nsec2022.xss.lol:8443/){ .md-button .md-button--primary target=_blank}
+[Live instance (only for Hackfest)](https://hackfest.xss.lol:8443/){ .md-button .md-button--primary target=_blank}
 
 
 ## Context

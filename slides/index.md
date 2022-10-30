@@ -6,13 +6,13 @@ backgroundImage: url('images/hero-background.svg')
 marp: true
 ---
 
-![bg left:40% 80%](images/nsec_logo.png)
+![bg left:40% 80%](images/hf_logo.png)
 
 # **Web Application Firewall Workshop**
 
 Presented by Philippe Arteau
 
-**NorthSec 2022**
+**Hackfest 2022**
 
 ---
 
@@ -211,7 +211,7 @@ Content when fetch:
 Time for some actions..
 
 Open the following URL and see if you can find the bypasses:
-[Live instance (only for NorthSec)](http://nsec2022.xss.lol:2222/)
+[Live instance (only for Hackfest)](http://hackfest.xss.lol:2222/)
 
 ---
 
@@ -276,7 +276,7 @@ Source: [A Scientific Notation Bug in MySQL left AWS WAF Clients Vulnerable to S
 
 Time to bypass one of the most robust WAF modsecurity!
 
-[Live instance (only for NorthSec)](http://nsec2022.xss.lol/)
+[Live instance (only for Hackfest)](http://hackfest.xss.lol/)
 
 ---
 
@@ -330,7 +330,7 @@ In order to work:
 
 New exercises for the fourth block!
 
-[Live instance (only for NorthSec)](https://nsec2022.xss.lol:8443/)
+[Live instance (only for Hackfest)](https://hackfest.xss.lol:8443/)
 
 ---
 
@@ -368,7 +368,7 @@ Transfer-Encoding: chunked
 5\r\n
 Hello\r\n
 8\r\n
-NorthSec\r\n
+Hackfest\r\n
 B\r\n
 Conference!\r\n
 0\r\n

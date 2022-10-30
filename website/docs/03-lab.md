@@ -15,7 +15,7 @@ Initialize the database by fetching `db_reset.php`.
 ![](images/lab3_reset.png)
 
 
-[Live instance (only for NorthSec)](http://nsec2022.xss.lol/){ .md-button .md-button--primary target=_blank}
+[Live instance (only for Hackfest)](http://hackfest.xss.lol/){ .md-button .md-button--primary target=_blank}
 
 ## Finding the SQL injections
 
